@@ -7,7 +7,7 @@ local backup_dir = sep .. '[^' .. sep .. ']+$'
 
 local function dirname(self)
   local path = self:gsub(backup_dir, '')
-  return path == '' and path.sep or path
+  return path == '' and sep or path
 end
 
 local path = {
@@ -20,16 +20,14 @@ local path = {
   extname = function(self)
     local start, stop = self:find('%.[^%.]+$')
     return start and self:sub(start, stop) or ''
-  end
+  end,
   is_root = function(self) 
     return self:gsub('%w:', '') == sep
-  end
+  end,
   dirname = dirname,
   parent = dirname,
-  sep = sep
+  sep = sep,
 }
-
-
 
 if exports then
   module.exports = path

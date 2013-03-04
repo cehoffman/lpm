@@ -1,4 +1,5 @@
-require '../../init'
+package.path = '../?/init.lua;' .. package.path
+require 'lpm'
 local path = require 'path'
 local errors = {}
 

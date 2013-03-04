@@ -187,8 +187,8 @@ for k, v in pairs(package.loaded) do
   package.loaded[k] = {exports = v}
 end
 
-require 'semver'
-require './test'
-require 'rc'
+-- require 'semver'
+-- require './test'
+-- require 'rc'
 -- path = require 'path'
 -- print(path.parent)
