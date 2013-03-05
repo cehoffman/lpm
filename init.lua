@@ -1,3 +1,15 @@
+package.searchpath = package.searchpath or function(name, paths)
+  local alt_path = package.config:sub(3, 3)
+  for pat in paths:gmatch('([^' .. alt_path .. ']+)' .. alt_path .. '?') do
+    local filename = pat:gsub('%?', name)
+    local file = io.open(filename, 'r')
+    if file then
+      file:close()
+      return filename
+    end
+  end
+end
+
 -- search for the path that led to inclusion of this file
 local __filename = package.searchpath('lpm', package.path)
 local sep = package.config:sub(1, 1)
